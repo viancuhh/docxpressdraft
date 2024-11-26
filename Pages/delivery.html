@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocXpress - Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Delivery Details</h1>
+        <form id="deliveryForm">
+            <label for="deliveryType">Delivery Type:</label>
+            <select id="deliveryType" required>
+                <option value="Standard">Standard Delivery</option>
+                <option value="Express">Express Delivery</option>
+                <option value="Pickup">Pickup</option>
+            </select>
+
+            <label for="deliveryAddress">Delivery Address:</label>
+            <textarea id="deliveryAddress" required></textarea>
+
+            <label for="deliveryPhone">Phone Number:</label>
+            <input type="tel" id="deliveryPhone" required />
+
+            <button type="submit">Next</button>
+        </form>
+    </div>
+    <script>
+        // Pre-fill delivery details with data from localStorage
+        window.addEventListener("DOMContentLoaded", () => {
+            const orderData = JSON.parse(localStorage.getItem("orderData")) || {};
+            document.getElementById("deliveryAddress").value = orderData.address || "";
+            document.getElementById("deliveryPhone").value = orderData.phone || "";
+        });
+
+        // Save updated delivery details and navigate to confirmation
+        document.getElementById("deliveryForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const deliveryType = document.getElementById("deliveryType").value;
+            const deliveryAddress = document.getElementById("deliveryAddress").value;
+            const deliveryPhone = document.getElementById("deliveryPhone").value;
+
+            if (!deliveryType || !deliveryAddress || !deliveryPhone) {
+                alert("Please complete all fields!");
+                return;
+            }
+
+            const orderData = JSON.parse(localStorage.getItem("orderData")) || {};
+            orderData.deliveryType = deliveryType;
+            orderData.deliveryAddress = deliveryAddress;
+            orderData.deliveryPhone = deliveryPhone;
+            localStorage.setItem("orderData", JSON.stringify(orderData));
+
+            // Navigate to Order Confirmation
+            window.location.href = "orderConfirmation.html";
+        });
+    </script>
+</body>
+</html>
