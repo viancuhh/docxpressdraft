@@ -25,29 +25,6 @@ document.getElementById("docuOrderForm").addEventListener("submit", function (e)
             window.location.href = "userVerify.html";
 });
 
-
-document.getElementById("orderForm")?.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const docuType = document.getElementById("docuType").value;
-    const copies = document.getElementById("copies").value;
-    const fullName = document.getElementById("fullName").value;
-    const birthday = document.getElementById("birthday").value;
-
-    if (!docuType || !copies || !fullName || !birthday) {
-        alert("Please fill in all fields!");
-        return;
-    }
-
-    // Store order data in localStorage
-    localStorage.setItem(
-        "orderData",
-        JSON.stringify({ docuType, copies, fullName, birthday })
-    );
-
-    // Navigate to the verification page
-    window.location.href = "userVerify.html";
-});
 document.addEventListener("DOMContentLoaded", function () {
     // Retrieve order data from localStorage
     const orderData = JSON.parse(localStorage.getItem("orderData")) || {};
