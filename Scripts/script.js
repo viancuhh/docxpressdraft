@@ -1,3 +1,6 @@
+
+
+
 document.getElementById("orderForm")?.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -16,6 +19,33 @@ document.getElementById("orderForm")?.addEventListener("submit", function (e) {
         "orderData",
         JSON.stringify({ docuType, copies, fullName, birthday })
     );
+
+        // Save data to localStorage on form submission
+        document.getElementById("docuOrderForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const docuType = document.getElementById("docuType").value;
+            const copies = document.getElementById("copies").value;
+            const fullName = document.getElementById("fullName").value;
+            const birthday = document.getElementById("birthday").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const address = document.getElementById("address").value;
+
+            if (!docuType || !copies || !fullName || !birthday || !email || !phone || !address) {
+                alert("Please fill in all fields!");
+                return;
+            }
+
+            // Store order data in localStorage
+            localStorage.setItem(
+                "orderData",
+                JSON.stringify({ docuType, copies, fullName, birthday, email, phone, address })
+            );
+
+            // Navigate to the verification page
+            window.location.href = "userVerify.html";
+});
 
     // Navigate to the verification page
     window.location.href = "userVerify.html";
