@@ -41,18 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const gender = document.getElementById("gender").value;
         const fatherFullName = document.getElementById("fatherFullName").value;
         const motherFullName = document.getElementById("motherFullName").value;
-        const motherMaidenName = document.getElementById("motherMaidenName").value;
+ 
 
         // Validate input
-        if (!fatherFullName || !motherFullName || !motherMaidenName) {
+        if (!fatherFullName || !motherFullName) {
             alert("Please fill in all fields.");
             return;
         }
 
         // Store verification data in localStorage (in case you need it later)
         orderData.fatherFullName = fatherFullName;
-        orderData.motherFullName = motherFullName;
-        orderData.motherMaidenName = motherMaidenName;
+        orderData.motherFullName = motherFullName;
 
         // Optionally, you can store any changes back to localStorage
         localStorage.setItem("orderData", JSON.stringify(orderData));
