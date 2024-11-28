@@ -1,28 +1,24 @@
 // Save data to localStorage on form submission
 document.getElementById("docuOrderForm").addEventListener("submit", function (e) {
-            e.preventDefault();
+    e.preventDefault();
 
-            const docuType = document.getElementById("docuType").value;
-            const copies = document.getElementById("copies").value;
-            const fullName = document.getElementById("fullName").value;
-            const birthday = document.getElementById("birthday").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const address = document.getElementById("address").value;
+    const docuType = document.getElementById("docuType").value;
+    const copies = document.getElementById("copies").value;
+    const fullName = document.getElementById("fullName").value;
+    const birthday = document.getElementById("birthday").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const address = document.getElementById("address").value;
 
-            if (!docuType || !copies || !fullName || !birthday || !email || !phone || !address) {
-                alert("Please fill in all fields!");
-                return;
-            }
+    if (!docuType || !copies || !fullName || !birthday || !email || !phone || !address) {
+        alert("Please fill in all fields!");
+        return;
+    }
 
-            // Store order data in localStorage
-            localStorage.setItem(
-                "orderData",
-                JSON.stringify({ docuType, copies, fullName, birthday, email, phone, address })
-            );
-
+    // Store order data in localStorage
+    localStorage.setItem("orderData", JSON.stringify({ docuType, copies, fullName, birthday, email, phone, address }));
             // Navigate to the verification page
-            window.location.href = "userVerify.html";
+    window.location.href = "userVerify.html";
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -56,7 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Store verification data in localStorage (in case you need it later)
         orderData.fatherFullName = fatherFullName;
-        orderData.motherFullName = motherFullName;
+        orderData.motherFullName = motherFullName;
+
 
         // Optionally, you can store any changes back to localStorage
         localStorage.setItem("orderData", JSON.stringify(orderData));
