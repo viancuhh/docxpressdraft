@@ -31,37 +31,37 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("birthday").value = orderData.birthday || "";
         document.getElementById("gender").value = orderData.gender || "Female"; // Default to "Female" if no gender is provided
     }
-
+});
     // Handle the form submission for User Verification
-    document.getElementById("verificationForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Retrieve values from the form
-        const fullName = document.getElementById("fullName").value;
-        const birthday = document.getElementById("birthday").value;
-        const gender = document.getElementById("gender").value;
-        const fatherFullName = document.getElementById("fatherFullName").value;
-        const motherFullName = document.getElementById("motherFullName").value;
+document.getElementById("verificationForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    
+    // Retrieve values from the form
+    const fullName = document.getElementById("fullName").value;
+    const birthday = document.getElementById("birthday").value;
+    const gender = document.getElementById("gender").value;
+    const fatherFullName = document.getElementById("fatherFullName").value;
+    const motherFullName = document.getElementById("motherFullName").value;
  
 
         // Validate input
-        if (!fatherFullName || !motherFullName) {
-            alert("Please fill in all fields.");
-            return;
-        }
+    if (!fatherFullName || !motherFullName) {
+        alert("Please fill in all fields.");
+        return;
+    }
 
-        // Store verification data in localStorage (in case you need it later)
-        orderData.fatherFullName = fatherFullName;
-        orderData.motherFullName = motherFullName;
+    // Store verification data in localStorage (in case you need it later)
+    orderData.fatherFullName = fatherFullName;
+    orderData.motherFullName = motherFullName;
 
 
-        // Optionally, you can store any changes back to localStorage
-        localStorage.setItem("orderData", JSON.stringify(orderData));
+    // Optionally, you can store any changes back to localStorage
+    localStorage.setItem("orderData", JSON.stringify(orderData));
 
-        // Navigate to the next step, e.g., the payment page
-        window.location.href = "payment.html";
-    });
+    // Navigate to the next step, e.g., the payment page
+    window.location.href = "payment.html";
 });
+
 document.getElementById("paymentForm")?.addEventListener("submit", function (e) {
     e.preventDefault();
 
